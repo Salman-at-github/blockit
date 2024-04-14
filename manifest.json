@@ -1,0 +1,25 @@
+{
+    "manifest_version": 3,
+    "name": "BlockIt",
+    "icons": {
+        "128": "/icons/bi-128.png",
+        "48": "/icons/bi-48.png",
+        "16": "/icons/bi-16.png"
+    },
+    "version": "1.0.1",
+    "background": {
+        "service_worker": "bg.js"
+    },
+    "action": {
+        "default_popup": "index.html"
+    },
+    "permissions": [
+        "declarativeNetRequest",
+        "activeTab",
+        "storage",
+        "tabs"
+    ],
+    "host_permissions": [
+        "<all_urls>"
+    ]
+}
