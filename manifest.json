@@ -1,6 +1,8 @@
 {
     "manifest_version": 3,
-    "name": "BlockIt",
+    "name": "BlockIt - block annoying sites",
+    "short_name": "BlockIt",
+    "description": "BlockIt is a site-blocking extension that helps you stay focused by blocking distracting websites.",
     "icons": {
         "128": "/icons/bi-128.png",
         "48": "/icons/bi-48.png",
