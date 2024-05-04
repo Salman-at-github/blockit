@@ -98,6 +98,10 @@ ul {
     /* flex-direction: column; */
     height: 150px;
     overflow-y: scroll;
+    border-left: 1.5px solid rgb(181, 2, 236);
+    border-right: 1.5px solid rgb(181, 2, 236);
+    border-radius: 5px;
+    padding: 5px;
 }
 /* for scroll bar */
 
