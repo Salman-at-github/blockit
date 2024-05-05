@@ -1,11 +1,11 @@
 // Function to block a site
 async function blockSite(site) {
     try {
-        let { blockedSites } = await chrome.storage.local.get('blockedSites');
+        let { blockedSites } = await chrome.storage.sync.get('blockedSites');
         blockedSites = blockedSites || [];
         if (!blockedSites.includes(site)) {
             blockedSites.push(site);
-            await chrome.storage.local.set({ 'blockedSites': blockedSites });
+            await chrome.storage.sync.set({ 'blockedSites': blockedSites });
         }
         updateBlockedSites();
     } catch (error) {
@@ -17,12 +17,12 @@ async function blockSite(site) {
 // Function to unblock a site
 async function unblockSite(site) {
     try {
-        let { blockedSites } = await chrome.storage.local.get('blockedSites');
+        let { blockedSites } = await chrome.storage.sync.get('blockedSites');
         blockedSites = blockedSites || [];
         const index = blockedSites.indexOf(site);
         if (index !== -1) {
             blockedSites.splice(index, 1);
-            await chrome.storage.local.set({ 'blockedSites': blockedSites });
+            await chrome.storage.sync.set({ 'blockedSites': blockedSites });
         }
         updateBlockedSites();
     } catch (error) {
@@ -34,14 +34,14 @@ async function unblockSite(site) {
 // Function to update the list of blocked sites in the options page
 async function updateBlockedSites() {
     try {
-        let { blockedSites } = await chrome.storage.local.get('blockedSites');
+        let { blockedSites } = await chrome.storage.sync.get('blockedSites');
         blockedSites = blockedSites || [];
         let ul = document.getElementById("blockedSites");
         ul.innerHTML = '';
         blockedSites.forEach(function(site) {
             let li = document.createElement("li");
             li.className = "blockedUrl";
-            li.textContent = site.length > 30 ? site.substring(0, 30) + "..." : site;
+            li.textContent = site.length > 25 ? site.substring(0, 25) + "..." : site;
             let button = document.createElement("button");
             button.textContent = "Unblock";
             button.classList.add("unblockButton")
